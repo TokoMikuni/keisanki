@@ -21,14 +21,12 @@ def my_function3():
         print("DEF")
         print("GHI")
 
-if __name__ == "__main__":
-  
-  t1 = Thread(target = my_function1)
-  t2 = Thread(target = my_function2)
-  t3 = Thread(target = my_function3)
-  t1.start()
-  t2.start()
-  t3.start()
-  t1.join()
-  t2.join()
-  t3.join()
+from threading import Semaphore, Thread
+if __name__=="__main__":
+    semaphore=Semaphore(2)
+    m=Thread(target=my_function1)
+    n=Thread(target=my_function2)
+    o=Thread(target=my_function3)
+    m.start()
+    n.start()
+    o.start()
